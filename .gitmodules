@@ -1,0 +1,6 @@
+[submodule "order-service-frontend"]
+	path = order-service-frontend
+	url = https://github.com/koksha19/order-service-frontend.git
+[submodule "order-service-backend"]
+	path = order-service-backend
+	url = https://github.com/koksha19/order-service-backend.git

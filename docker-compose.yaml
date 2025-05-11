@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  order-service-backend:
+    build:
+      context: order-service-backend
+    container_name: order-service-backend
+    ports:
+      - '8080:8080'
+    environment:
+      - MONGO_URI=mongodb+srv://levbereza:kokshadatabases@cluster0.dq9vg.mongodb.net/techmagic?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=secret
+    volumes:
+      - ./order-service-backend/public/images:/app/public/images
+    depends_on:
+      - mongo
+
+  order-service-frontend:
+    build:
+      context: ./order-service-frontend
+    container_name: order-service-frontend
+    ports:
+      - '4201:4200'
+    depends_on:
+      - order-service-backend
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

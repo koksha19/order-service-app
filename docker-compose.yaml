@@ -8,8 +8,8 @@ services:
     ports:
       - '8080:8080'
     environment:
-      - MONGO_URI=mongodb+srv://levbereza:kokshadatabases@cluster0.dq9vg.mongodb.net/techmagic?retryWrites=true&w=majority&appName=Cluster0
-      - JWT_SECRET=secret
+      - MONGO_URI=mongodb+srv://levbereza:${DB_PASS}@cluster0.dq9vg.mongodb.net/techmagic?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=${JWT_SECRET}
     volumes:
       - ./order-service-backend/public/images:/app/public/images
     depends_on:
